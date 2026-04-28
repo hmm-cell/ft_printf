@@ -48,7 +48,7 @@ int ft_un_putnbr(unsigned int n)
     return (count);
 }
 
-int ft_puthex(unsigned int n, char	format)
+int ft_puthex(unsigned long n, char	format)
 {
     int count;
 
@@ -62,4 +62,19 @@ int ft_puthex(unsigned int n, char	format)
 	else if (format == 'x')
 		count += ft_putchar((n % 16) - 10 + 'a');
     return (count);
+}
+
+int	ft_print_address(unsigned long n, char format)
+{
+	int	count;
+
+	count = 0;
+	if (n == 0)
+		return (ft_putstr("(nil)"));
+	else
+	{
+		count += ft_putstr("0x");
+		count += ft_puthex(n, 'x');
+	}
+	return (count);
 }
