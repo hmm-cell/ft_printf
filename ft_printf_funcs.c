@@ -47,3 +47,17 @@ int ft_un_putnbr(unsigned int n)
     count += ft_putchar(n % 10 + '0');
     return (count);
 }
+
+int ft_puthex(unsigned int n)
+{
+    int count;
+
+    count = 0;
+    if (n >= 16)
+        count += ft_puthex(n / 16);
+	if ((n % 16) < 10)
+    	count += ft_putchar(n % 16 + '0');
+	else
+		count += ft_putchar((n % 16) - 10 + 'A');
+    return (count);
+}
