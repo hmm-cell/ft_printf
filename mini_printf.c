@@ -1,31 +1,13 @@
 static	int	format_handler(const char c, va_list args)
 {
-	int	num;
-	char	*s;
-	char	ch;
-	int	l_ctr;
-	
 	if (c == 'i' || c == 'd')
-	{
 		return (ft_putnbr(va_arg(args, int)));
-	}
 	else if (c == 's')
-	{
-		s = va_arg(args, char *);
-		l_ctr += ft_putstr_fd(s, 1);
-	}
+		return (ft_putstr(va_arg(args, char *)));
 	else if (c == 'c')
-	{
-		ch = (char)va_arg(args, int);
-		ft_putchar_fd(c, 1);
-		l_ctr++;
-	}
+		return (ft_putchar((char)va_arg(args, int)));
 	else
-	{
-		ft_putchar_fd(*format, 1);
-		l_ctr++;
-	}
-	
+		return (ft_putchar(c));
 }
 
 int	mini_printf(const char *format, ...)
