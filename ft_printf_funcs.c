@@ -48,16 +48,18 @@ int ft_un_putnbr(unsigned int n)
     return (count);
 }
 
-int ft_puthex(unsigned int n)
+int ft_puthex(unsigned int n, char	format)
 {
     int count;
 
     count = 0;
     if (n >= 16)
-        count += ft_puthex(n / 16);
+        count += ft_puthex(n / 16, format);
 	if ((n % 16) < 10)
     	count += ft_putchar(n % 16 + '0');
-	else
+	else if (format == 'X')
 		count += ft_putchar((n % 16) - 10 + 'A');
+	else if (format == 'x')
+		count += ft_putchar((n % 16) - 10 + 'a');
     return (count);
 }
