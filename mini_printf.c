@@ -2,6 +2,8 @@ static	int	format_handler(const char c, va_list args)
 {
 	if (c == 'i' || c == 'd')
 		return (ft_putnbr(va_arg(args, int)));
+	else if (c == 'u')
+		return (ft_un_putnbr(va_arg(args, unsigned int)));
 	else if (c == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	else if (c == 'c')
