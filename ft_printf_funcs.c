@@ -64,7 +64,7 @@ int ft_puthex(unsigned long n, char	format)
     return (count);
 }
 
-int	ft_print_address(unsigned long n, char format)
+int	ft_print_address(unsigned long n)
 {
 	int	count;
 
