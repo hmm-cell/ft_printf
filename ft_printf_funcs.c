@@ -3,7 +3,7 @@ int	ft_putchar(char c)
 	return (write(1, &c, 1));
 }
 
-static int	num_size(int n)
+int	num_size(int n)
 {
 	int		size;
 	long	nbr;
@@ -25,7 +25,7 @@ static int	num_size(int n)
 	return (size);
 }
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s)
 {
 	int	ctr;
 	
@@ -34,14 +34,14 @@ int	ft_putstr_fd(char *s, int fd)
 		return (ctr);
 	while (*s)
 	{
-		write(fd, s, 1);
+		write(1, s, 1);
 		s++;
 		ctr++;
 	}
 	return (ctr);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n)
 {
 	long	nbr;
 
@@ -49,9 +49,9 @@ void	ft_putnbr_fd(int n, int fd)
 	if (nbr < 0)
 	{
 		nbr = -nbr;
-		write(fd, "-", 1);
+		write(1, "-", 1);
 	}
 	if (nbr > 9)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd((nbr % 10) + '0', fd);
+		ft_putnbr_fd(nbr / 10);
+	ft_putchar_fd((nbr % 10) + '0');
 }
