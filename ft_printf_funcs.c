@@ -41,17 +41,20 @@ int	ft_putstr_fd(char *s)
 	return (ctr);
 }
 
-void	ft_putnbr_fd(int n)
+int ft_putnbr(int n)
 {
-	long	nbr;
+    int count;
 
-	nbr = n;
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		write(1, "-", 1);
-	}
-	if (nbr > 9)
-		ft_putnbr_fd(nbr / 10);
-	ft_putchar_fd((nbr % 10) + '0');
+    count = 0;
+    if (n == -2147483648)
+        return (write(1, "-2147483648", 11));
+    if (n < 0)
+    {
+        count += write(1, "-", 1);
+        n = -n;
+    }
+    if (n >= 10)
+        count += ft_putnbr(n / 10);
+    count += ft_putchar(n % 10 + '0');
+    return (count);
 }
