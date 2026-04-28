@@ -9,7 +9,7 @@ static	int	format_handler(const char c, va_list args)
 	else if (c == 'c')
 		return (ft_putchar((char)va_arg(args, int)));
 	else if (c == 'x' || c == 'X')
-		return (ft_puthex(va_arg(args, unsigned int), c));
+		return (ft_puthex(va_arg(args, unsigned long), c));
 	else if (c == 'p')
 		return (ft_print_address((unsigned long)va_arg(args, void *)));
 	else if (c == '%')
