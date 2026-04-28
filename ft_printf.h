@@ -18,6 +18,6 @@ int	ft_putstr(char *s);
 int	ft_putnbr(int n);
 int	ft_un_putnbr(unsigned int n);
 int	ft_puthex(unsigned long n, char format);
-int	ft_print_address(unsigned long n, char format);
+int	ft_print_address(unsigned long n);
 
 #endif
