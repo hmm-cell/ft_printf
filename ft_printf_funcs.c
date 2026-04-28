@@ -3,29 +3,7 @@ int	ft_putchar(char c)
 	return (write(1, &c, 1));
 }
 
-int	num_size(int n)
-{
-	int		size;
-	long	nbr;
-
-	nbr = n;
-	size = 0;
-	if (nbr == 0)
-		return (1);
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		size++;
-	}
-	while (nbr > 0)
-	{
-		nbr /= 10;
-		size++;
-	}
-	return (size);
-}
-
-int	ft_putstr_fd(char *s)
+int	ft_putstr(char *s)
 {
 	int	ctr;
 	
@@ -55,6 +33,17 @@ int ft_putnbr(int n)
     }
     if (n >= 10)
         count += ft_putnbr(n / 10);
+    count += ft_putchar(n % 10 + '0');
+    return (count);
+}
+
+int ft_un_putnbr(unsigned int n)
+{
+    int count;
+
+    count = 0;
+    if (n >= 10)
+        count += ft_un_putnbr(n / 10);
     count += ft_putchar(n % 10 + '0');
     return (count);
 }
