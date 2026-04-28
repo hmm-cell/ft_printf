@@ -23,8 +23,10 @@ int	mini_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			l_ctr = format_handler(*format, args);
+			l_ctr += format_handler(*format, args);
 		}
+		else
+			l_ctr += ft_putchar(*format);
 		format++;
 	}
 	va_end(args);
