@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
@@ -61,23 +61,40 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd((nbr % 10) + '0', fd);
 }
 
-int	format_handler(char c, va_list args)
+static	int	format_handler(const char c, va_list args)
 {
-	switch (c) {
-  case 'i':
-  
-    break;
-  case 's':
-    break;
-  default:
-}
+	int	num;
+	char	*s;
+	char	ch;
+	int	l_ctr;
+	
+	if (c == 'i')
+	{
+		num = va_arg(args, int);
+		l_ctr += num_size(n);
+		ft_putnbr_fd(n, 1);
+	}
+	else if (c == 's')
+	{
+		s = va_arg(args, char *);
+		l_ctr += ft_putstr_fd(s, 1);
+	}
+	else if (c == 'c')
+	{
+		ch = (char)va_arg(args, int);
+		ft_putchar_fd(c, 1);
+		l_ctr++;
+	}
+	else
+	{
+		ft_putchar_fd(*format, 1);
+		l_ctr++;
+	}
+	
 }
 
 int	mini_printf(const char *format, ...)
 {
-	int	n;
-	char	*s;
-	char	c;
 	int	l_ctr;
 	
 	va_list args;
@@ -87,28 +104,7 @@ int	mini_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'i')
-			{
-				n = va_arg(args, int);
-				l_ctr += num_size(n);
-				ft_putnbr_fd(n, 1);
-            		}
-            		else if (*format == 's')
-			{
-				s = va_arg(args, char *);
-				l_ctr += ft_putstr_fd(s, 1);
-			}
-			else if (*format == 'c')
-			{
-				c = (char)va_arg(args, int);
-				ft_putchar_fd(c, 1);
-				l_ctr++;
-			}
-		}
-		else
-		{
-			ft_putchar_fd(*format, 1);
-			l_ctr++;
+			l_ctr = format_handler(*format, args);
 		}
 		format++;
 	}
