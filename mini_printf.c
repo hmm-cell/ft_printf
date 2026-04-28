@@ -8,11 +8,15 @@ static	int	format_handler(const char c, va_list args)
 		return (ft_putstr(va_arg(args, char *)));
 	else if (c == 'c')
 		return (ft_putchar((char)va_arg(args, int)));
+	else if (c == 'x' || c == 'X')
+		return (ft_puthex(va_arg(args, unsigned int), c))
+	else if (c == 'p')
+		return (ft_print_address(va_arg(args, void *)));
 	else
 		return (ft_putchar(c));
 }
 
-int	mini_printf(const char *format, ...)
+int	printf(const char *format, ...)
 {
 	int	l_ctr;
 	
