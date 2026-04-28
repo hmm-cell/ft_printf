@@ -11,7 +11,7 @@ static	int	format_handler(const char c, va_list args)
 	else if (c == 'x' || c == 'X')
 		return (ft_puthex(va_arg(args, unsigned int), c))
 	else if (c == 'p')
-		return (ft_print_address(va_arg(args, void *)));
+		return (ft_print_address((unsigned long)va_arg(args, void *)));
 	else if (c == '%')
 		return (ft_putchar('%'));
 	else
@@ -24,6 +24,7 @@ int	printf(const char *format, ...)
 	
 	va_list args;
 	va_start(args, format);
+	l_ctr = 0;
 	while (*format)
 	{
 		if (*format == '%')
