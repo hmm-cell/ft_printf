@@ -18,13 +18,14 @@ static	int	format_handler(const char c, va_list args)
 		return (ft_putchar(c));
 }
 
-int	printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
+	va_list	args;
 	int	l_ctr;
-	
-	va_list args;
-	va_start(args, format);
+
 	l_ctr = 0;
+	if (!format)
+		return (-1);
 	while (*format)
 	{
 		if (*format == '%')
@@ -42,6 +43,6 @@ int	printf(const char *format, ...)
 
 int main(void)
 {
-    mini_printf("O simokas tem %i anos e gosta de %s. \n %i", 19, "grandes serpentes", 67);
+    ft_printf("O simokas tem %i anos e gosta de %s. \n %i", 19, "grandes serpentes", 67);
     return (0);
 }
