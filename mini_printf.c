@@ -1,66 +1,3 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-int	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-static int	num_size(int n)
-{
-	int		size;
-	long	nbr;
-
-	nbr = n;
-	size = 0;
-	if (nbr == 0)
-		return (1);
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		size++;
-	}
-	while (nbr > 0)
-	{
-		nbr /= 10;
-		size++;
-	}
-	return (size);
-}
-
-int	ft_putstr_fd(char *s, int fd)
-{
-	int	ctr;
-	
-	ctr = 0;
-	if (!s)
-		return (ctr);
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-		ctr++;
-	}
-	return (ctr);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	long	nbr;
-
-	nbr = n;
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		write(fd, "-", 1);
-	}
-	if (nbr > 9)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd((nbr % 10) + '0', fd);
-}
-
 static	int	format_handler(const char c, va_list args)
 {
 	int	num;
@@ -68,11 +5,9 @@ static	int	format_handler(const char c, va_list args)
 	char	ch;
 	int	l_ctr;
 	
-	if (c == 'i')
+	if (c == 'i' || c == 'd')
 	{
-		num = va_arg(args, int);
-		l_ctr += num_size(n);
-		ft_putnbr_fd(n, 1);
+		return (ft_putnbr(va_arg(args, int)));
 	}
 	else if (c == 's')
 	{
