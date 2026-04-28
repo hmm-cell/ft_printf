@@ -12,6 +12,8 @@ static	int	format_handler(const char c, va_list args)
 		return (ft_puthex(va_arg(args, unsigned int), c))
 	else if (c == 'p')
 		return (ft_print_address(va_arg(args, void *)));
+	else if (c == '%')
+		return (ft_putchar('%'));
 	else
 		return (ft_putchar(c));
 }
