@@ -1,3 +1,5 @@
+#include "ft_printf.h"
+
 static	int	format_handler(const char c, va_list args)
 {
 	if (c == 'i' || c == 'd')
