@@ -11,7 +11,7 @@ int	ft_putstr(char *s)
 	
 	ctr = 0;
 	if (!s)
-		return (ctr);
+    	return (ft_putstr("(null)"));
 	while (*s)
 	{
 		write(1, s, 1);
