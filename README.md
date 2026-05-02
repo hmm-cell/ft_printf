@@ -72,11 +72,6 @@ Include the header in your source file and link against the archive:
 
 ```c
 #include "ft_printf.h"
-
-int main(void)
-{
-    ft_printf("Hello, %s! You are %d years old.\n", "world", 42);
-}
 ```
 
 ```bash
