@@ -75,7 +75,7 @@ Include the header in your source file and link against the archive:
 ```
 
 ```bash
-gcc main.c libftprintf.a -o my_program
+cc main.c libftprintf.a -o my_program
 ./my_program
 ```
 
