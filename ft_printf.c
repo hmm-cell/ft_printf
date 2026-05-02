@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static	int	format_handler(const char c, va_list args)
+static int	format_handler(const char c, va_list args)
 {
 	if (c == 'i' || c == 'd')
 		return (ft_putnbr(va_arg(args, int)));
@@ -23,9 +23,9 @@ static	int	format_handler(const char c, va_list args)
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int	l_ctr;
+	int		count;
 
-	l_ctr = 0;
+	count = 0;
 	va_start(args, format);
 	if (!format)
 		return (-1);
@@ -34,18 +34,12 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			l_ctr += format_handler(*format, args);
+			count += format_handler(*format, args);
 		}
 		else
-			l_ctr += ft_putchar(*format);
+			count += ft_putchar(*format);
 		format++;
 	}
 	va_end(args);
-	return (l_ctr);
-}
-
-int main(void)
-{
-    ft_printf("O simokas tem %i anos e gosta de %s. \n %i", 19, "grandes serpentes", 67);
-    return (0);
+	return (count);
 }
