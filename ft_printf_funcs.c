@@ -8,10 +8,10 @@ int	ft_putchar(char c)
 int	ft_putstr(char *s)
 {
 	int	ctr;
-	
+
 	ctr = 0;
 	if (!s)
-    	return (ft_putstr("(null)"));
+		return (ft_putstr("(null)"));
 	while (*s)
 	{
 		write(1, s, 1);
@@ -21,38 +21,38 @@ int	ft_putstr(char *s)
 	return (ctr);
 }
 
-int ft_putnbr(int n)
+int	ft_putnbr(int n)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    if (n == -2147483648)
-        return (write(1, "-2147483648", 11));
-    if (n < 0)
-    {
-        count += write(1, "-", 1);
-        n = -n;
-    }
-    if (n >= 10)
-        count += ft_putnbr(n / 10);
-    count += ft_putchar(n % 10 + '0');
-    return (count);
+	count = 0;
+	if (n == -2147483648)
+		return (write(1, "-2147483648", 11));
+	if (n < 0)
+	{
+		count += write(1, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+		count += ft_putnbr(n / 10);
+	count += ft_putchar(n % 10 + '0');
+	return (count);
 }
 
-int ft_un_putnbr(unsigned int n)
+int	ft_un_putnbr(unsigned int n)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    if (n >= 10)
-        count += ft_un_putnbr(n / 10);
-    count += ft_putchar(n % 10 + '0');
-    return (count);
+	count = 0;
+	if (n >= 10)
+		count += ft_un_putnbr(n / 10);
+	count += ft_putchar(n % 10 + '0');
+	return (count);
 }
 
-int ft_puthex(unsigned long n, char format)
+int	ft_puthex(unsigned long n, char format)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n >= 16)
